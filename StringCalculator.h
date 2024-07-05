@@ -6,7 +6,8 @@
 class StringCalculator {
 public:
     static int add(const std::string& numbers);
-
+private:
+    static bool IsNullOrEmpty(const std::string* numbers);
 };
 
 #endif 
