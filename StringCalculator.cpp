@@ -9,6 +9,6 @@ int StringCalculator::add(const std::string& numbers) {
     if (IsNullOrEmpty(&numbers)) {
         return 0;
     }
-    return -1;
+    return 0;
 }
 
