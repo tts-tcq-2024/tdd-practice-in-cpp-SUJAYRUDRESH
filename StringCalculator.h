@@ -6,8 +6,13 @@
 class StringCalculator {
 public:
     static int add(const std::string& numbers);
+
 private:
     static bool IsNullOrEmpty(const std::string* numbers);
+    static void ReplaceNewlinesWithCommas(std::string& numbers);
+    static int ConvertToInt(const std::string& number);
+    static int AddNumber(int sum, const std::string& number);
+    static int SumNumbers(const std::string& numbers);
 };
 
-#endif 
+#endif // STRING_CALCULATOR_HPP
