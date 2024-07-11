@@ -18,6 +18,7 @@ private:
     static bool ShouldIgnoreNumber(const std::string& number);
     static void CollectNegativeNumber(const std::string& number, std::string& negatives);
     static void CheckForNegatives(const std::string& numbers, std::string& negatives);
+    static void AppendIfNotEmpty(std::string& str, const std::string& toAppend);
 };
 
 #endif // STRING_CALCULATOR_HPP
