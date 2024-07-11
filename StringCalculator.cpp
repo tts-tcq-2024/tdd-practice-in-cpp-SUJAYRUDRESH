@@ -11,7 +11,7 @@ char StringCalculator::GetCustomDelimiter(std::string& numbers) {
         numbers = numbers.substr(4); 
         return delimiter;
     }
-    return ','; // Default delimiter
+    return ','; 
 }
 
 void StringCalculator::ReplaceNewlinesWithCommas(std::string& numbers) {
