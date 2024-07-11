@@ -34,13 +34,25 @@ int StringCalculator::ConvertToInt(const std::string& number) {
     return std::stoi(number);
 }
 
+bool StringCalculator::ShouldIgnoreNumber(const std::string& number) {
+    int num = ConvertToInt(number);
+    return num > 1000;
+}
+
+int StringCalculator::AddNumber(int sum, const std::string& number) {
+    if (!number.empty() && !ShouldIgnoreNumber(number)) {
+        sum += ConvertToInt(number);
+    }
+    return sum;
+}
+/*
 int StringCalculator::AddNumber(int sum, const std::string& number) {
     if (!number.empty()) {
         sum += ConvertToInt(number);
     }
     return sum;
 }
-
+*/
 int StringCalculator::SumNumbers(const std::string& numbers) {
     int sum = 0;
     std::string currentNumber;
