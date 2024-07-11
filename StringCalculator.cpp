@@ -23,12 +23,10 @@ void StringCalculator::ReplaceNewlinesWithCommas(std::string& numbers) {
 }
 
 void StringCalculator::ReplaceCustomDelimiterWithCommas(std::string& numbers, char delimiter) {
-    if (delimiter != ',') { // Only replace if the custom delimiter is not a comma
-        for (char& ch : numbers) {
-            if (ch == delimiter) {
-                ch = ',';
-            }
-        }
+    char defaultDelimiter = ',';
+    for (char& ch : numbers) {
+        // Replace the delimiter if it matches the custom delimiter, otherwise replace with the default delimiter (',')
+        ch = (ch == delimiter) ? defaultDelimiter : ch;
     }
 }
 
