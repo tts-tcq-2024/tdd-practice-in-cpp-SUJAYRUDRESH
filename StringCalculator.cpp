@@ -40,12 +40,13 @@ bool StringCalculator::ShouldIgnoreNumber(const std::string& number) {
 }
 
 void StringCalculator::CollectNegativeNumber(const std::string& number, std::string& negatives) {
-    if (!number.empty() && number[0] == '-') {
-        if (!negatives.empty()) {
-            negatives += ", ";
-        }
-        negatives += number;
+    if (number.empty() || number[0] != '-') {
+        return;
     }
+    if (!negatives.empty()) {
+        negatives += ", ";
+    }
+    negatives += number;
 }
 
 void StringCalculator::CheckForNegatives(const std::string& numbers, std::string& negatives) {
