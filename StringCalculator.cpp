@@ -8,7 +8,7 @@ bool StringCalculator::IsNullOrEmpty(const std::string* numbers) {
 char StringCalculator::GetCustomDelimiter(std::string& numbers) {
     if (numbers.substr(0, 2) == "//") {
         char delimiter = numbers[2];
-        numbers = numbers.substr(4); // Remove the custom delimiter line
+        numbers = numbers.substr(4); 
         return delimiter;
     }
     return ','; // Default delimiter
@@ -25,7 +25,6 @@ void StringCalculator::ReplaceNewlinesWithCommas(std::string& numbers) {
 void StringCalculator::ReplaceCustomDelimiterWithCommas(std::string& numbers, char delimiter) {
     char defaultDelimiter = ',';
     for (char& ch : numbers) {
-        // Replace the delimiter if it matches the custom delimiter, otherwise replace with the default delimiter (',')
         ch = (ch == delimiter) ? defaultDelimiter : ch;
     }
 }
@@ -57,7 +56,7 @@ int StringCalculator::SumNumbers(const std::string& numbers) {
             currentNumber += ch;
         }
     }
-    sum = AddNumber(sum, currentNumber); // Add the last number if there is one
+    sum = AddNumber(sum, currentNumber); 
     return sum;
 }
 
