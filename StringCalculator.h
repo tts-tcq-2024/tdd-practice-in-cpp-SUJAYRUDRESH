@@ -9,11 +9,12 @@ public:
 
 private:
     static bool IsNullOrEmpty(const std::string* numbers);
-    static void ReplaceDelimitersWithCommas(std::string& numbers, char delimiter);
+    static char GetCustomDelimiter(std::string& numbers);
+    static void ReplaceNewlinesWithCommas(std::string& numbers);
+    static void ReplaceCustomDelimiterWithCommas(std::string& numbers, char delimiter);
     static int ConvertToInt(const std::string& number);
     static int AddNumber(int sum, const std::string& number);
     static int SumNumbers(const std::string& numbers);
-    static char GetCustomDelimiter(std::string& numbers);
 };
 
 #endif // STRING_CALCULATOR_HPP
