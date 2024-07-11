@@ -56,11 +56,17 @@ TEST(StringCalculatorAddTests, IgnoreNumbersGreaterThan1000) {
 }
 
 TEST(StringCalculatorAddTests, ExpectExceptionForNegativeNumbers) {
+    std::string input = "-1,2";
+    StringCalculator objUnderTest;
+
     ASSERT_THROW({
-        std::string input = "-1,2";
-        StringCalculator objUnderTest;
-       objUnderTest.add(input);
-        }, std::invalid_argument("negatives not allowed: -1));
+        try {
+            objUnderTest.add(input);
+        } catch (const std::invalid_argument& err) {
+            EXPECT_EQ(std::string(err.what()), "negatives not allowed: -1");
+            throw;
+        }
+    }, std::invalid_argument);
 }
 /*
 TEST(StringCalculatorAddTests, ExpectExceptionForNegativeNumbers) {
