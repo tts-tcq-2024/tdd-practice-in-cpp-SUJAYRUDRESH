@@ -39,14 +39,16 @@ bool StringCalculator::ShouldIgnoreNumber(const std::string& number) {
     return num > 1000;
 }
 
+void StringCalculator::AppendIfNotEmpty(std::string& str, const std::string& toAppend) {
+    if (!str.empty()) {
+        str += ", ";
+    }
+    str += toAppend;
+}
 void StringCalculator::CollectNegativeNumber(const std::string& number, std::string& negatives) {
-    if (number.empty() || number[0] != '-') {
-        return;
+    if (!number.empty() && number[0] == '-') {
+        AppendIfNotEmpty(negatives, number);
     }
-    if (!negatives.empty()) {
-        negatives += ", ";
-    }
-    negatives += number;
 }
 
 void StringCalculator::CheckForNegatives(const std::string& numbers, std::string& negatives) {
