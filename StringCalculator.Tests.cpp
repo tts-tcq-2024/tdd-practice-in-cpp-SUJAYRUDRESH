@@ -28,12 +28,13 @@ TEST(StringCalculatorAddTests, ExpectSumForTwoNumbers) {
     ASSERT_EQ(result, expectedresult);
 }
 
-TEST(StringCalculatorAddTests, ExpectExceptionForNegativeNumbers) {
-    ASSERT_THROW({
-        std::string input = "-1,2";
-        StringCalculator objUnderTest;
-       objUnderTest.add(input);
-        }, std::runtime_error);
+TEST(StringCalculatorAddTests, ExpectSumWithCustomDelimiter) {
+    int expectedresult = 3;
+    std::string input = "//;\n1;2";
+    StringCalculator objUnderTest;
+    int result = objUnderTest.add(input);
+
+    ASSERT_EQ(result, expectedresult);
 }
 
 TEST(StringCalculatorAddTests, ExpectSumWithNewlineDelimiter) {
@@ -54,11 +55,26 @@ TEST(StringCalculatorAddTests, IgnoreNumbersGreaterThan1000) {
     ASSERT_EQ(result, expectedresult);
 }
 
-TEST(StringCalculatorAddTests, ExpectSumWithCustomDelimiter) {
-    int expectedresult = 3;
-    std::string input = "//;\n1;2";
+TEST(StringCalculatorAddTests, ExpectExceptionForNegativeNumbers) {
+    std::string input = "-1,2";
     StringCalculator objUnderTest;
-    int result = objUnderTest.add(input);
 
-    ASSERT_EQ(result, expectedresult);
+    ASSERT_THROW({
+        try {
+            objUnderTest.add(input);
+        } catch (const std::invalid_argument& err) {
+            EXPECT_EQ(std::string(err.what()), "negatives not allowed: -1");
+            throw;
+        }
+    }, std::invalid_argument);
 }
+/*
+TEST(StringCalculatorAddTests, ExpectExceptionForNegativeNumbers) {
+    ASSERT_THROW({
+        std::string input = "-1,2";
+        StringCalculator objUnderTest;
+       objUnderTest.add(input);
+        }, std::runtime_error);
+}
+*/
+
