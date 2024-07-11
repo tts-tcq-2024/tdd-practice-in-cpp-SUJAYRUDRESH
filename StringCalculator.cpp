@@ -45,14 +45,7 @@ int StringCalculator::AddNumber(int sum, const std::string& number) {
     }
     return sum;
 }
-/*
-int StringCalculator::AddNumber(int sum, const std::string& number) {
-    if (!number.empty()) {
-        sum += ConvertToInt(number);
-    }
-    return sum;
-}
-*/
+
 int StringCalculator::SumNumbers(const std::string& numbers) {
     int sum = 0;
     std::string currentNumber;
