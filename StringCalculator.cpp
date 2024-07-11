@@ -19,7 +19,7 @@ int StringCalculator::ConvertToInt(const std::string& number) {
 
 int StringCalculator::AddNumber(int sum, const std::string& number) {
     if (!number.empty()) {
-        sum += ConvertToInt(number);
+        sum -= ConvertToInt(number);
     }
     return sum;
 }
