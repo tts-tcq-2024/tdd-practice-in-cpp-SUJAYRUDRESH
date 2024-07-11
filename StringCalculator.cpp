@@ -14,10 +14,20 @@ char StringCalculator::GetCustomDelimiter(std::string& numbers) {
     return ','; // Default delimiter
 }
 
-void StringCalculator::ReplaceDelimitersWithCommas(std::string& numbers, char delimiter) {
+void StringCalculator::ReplaceNewlinesWithCommas(std::string& numbers) {
     for (char& ch : numbers) {
-        if (ch == delimiter || ch == '\n') {
+        if (ch == '\n') {
             ch = ',';
+        }
+    }
+}
+
+void StringCalculator::ReplaceCustomDelimiterWithCommas(std::string& numbers, char delimiter) {
+    if (delimiter != ',') { // Only replace if the custom delimiter is not a comma
+        for (char& ch : numbers) {
+            if (ch == delimiter) {
+                ch = ',';
+            }
         }
     }
 }
@@ -55,8 +65,8 @@ int StringCalculator::add(const std::string& numbers) {
 
     std::string processedNumbers = numbers;
     char delimiter = GetCustomDelimiter(processedNumbers);
-    ReplaceDelimitersWithCommas(processedNumbers, delimiter);
+    ReplaceNewlinesWithCommas(processedNumbers);
+    ReplaceCustomDelimiterWithCommas(processedNumbers, delimiter);
 
     return SumNumbers(processedNumbers);
 }
-
