@@ -60,6 +60,15 @@ TEST(StringCalculatorAddTests, ExpectExceptionForNegativeNumbers) {
         std::string input = "-1,2";
         StringCalculator objUnderTest;
        objUnderTest.add(input);
+        }, negatives not allowed: -1);
+}
+/*
+TEST(StringCalculatorAddTests, ExpectExceptionForNegativeNumbers) {
+    ASSERT_THROW({
+        std::string input = "-1,2";
+        StringCalculator objUnderTest;
+       objUnderTest.add(input);
         }, std::runtime_error);
 }
+*/
 
