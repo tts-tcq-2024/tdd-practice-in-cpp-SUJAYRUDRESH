@@ -15,6 +15,7 @@ private:
     static int ConvertToInt(const std::string& number);
     static int AddNumber(int sum, const std::string& number);
     static int SumNumbers(const std::string& numbers);
+    static bool ShouldIgnoreNumber(const std::string& number);
 };
 
 #endif // STRING_CALCULATOR_HPP
